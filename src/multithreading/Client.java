@@ -13,9 +13,9 @@ public class Client {
         Value v = new Value();
         // int counter = 0;
         Lock lock = new ReentrantLock();
-        Adder A = new Adder(v, lock);
+        Adder A = new Adder(v);
         Future<Void> future1 = pool.submit(A);
-        Subtractor S = new Subtractor(v, lock);
+        Subtractor S = new Subtractor(v);
         Future<Void> future2 = pool.submit(S);
         try {
             future1.get();
