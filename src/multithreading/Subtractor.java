@@ -14,9 +14,9 @@ public class Subtractor implements Callable<Void>{
     public Void call() throws Exception{
         for(int i=1;i<=100;i++){
             // lock.lock();
-            synchronized (counter) {
+            // synchronized (counter) {
                   counter.setCounter(counter.getCounter() - i);
-            }
+            // }
           
             // lock.unlock();
         }
