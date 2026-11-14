@@ -7,17 +7,20 @@ public class Adder implements Callable<Void> {
     private Value counter;
     private Lock lock;
 
-    public Adder(Value counter, Lock lock) {
+    public Adder(Value counter) {
         this.counter = counter;
-        this.lock = lock;
+        // this.lock = lock;
     }
 
     @Override
     public Void call() throws Exception {
         for (int i = 1; i <= 100; i++) {
-            lock.lock();
-            counter.setCounter(counter.getCounter()+i);
-            lock.unlock();
+            // lock.lock();
+            synchronized (counter) {
+             counter.setCounter(counter.getCounter()+i);   
+            }
+           
+            // lock.unlock();
         }
         return null;
     }
